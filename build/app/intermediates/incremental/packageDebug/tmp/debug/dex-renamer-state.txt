@@ -1,0 +1,4 @@
+#Sat Feb 25 15:40:17 UZT 2023
+base.0=/Users/macbookpro/Documents/xumoyunde/github/flutter_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
