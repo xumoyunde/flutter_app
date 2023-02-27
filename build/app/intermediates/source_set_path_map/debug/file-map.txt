@@ -10,3 +10,4 @@ com.example.flutterapp.github.app-rs-8 /Users/macbookpro/Documents/xumoyunde/git
 com.example.flutterapp.github.app-mergeDebugResources-9 /Users/macbookpro/Documents/xumoyunde/github/flutter_app/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
 com.example.flutterapp.github.app-mergeDebugResources-10 /Users/macbookpro/Documents/xumoyunde/github/flutter_app/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
 com.example.flutterapp.github.app-merged_res-11 /Users/macbookpro/Documents/xumoyunde/github/flutter_app/build/app/intermediates/merged_res/debug
+com.example.flutterapp.github.app-packaged_res-12 /Users/macbookpro/Documents/xumoyunde/github/flutter_app/build/fluttertoast/intermediates/packaged_res/debug

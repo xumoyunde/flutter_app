@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ui/ListMavzulari.dart';
+import 'ui/YangiListOrnaklari.dart';
 
 void main(){
   runApp(MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body: ListMavzulari(),
+        body: YangiListOrnaklari(),
       ),
     );
   }
