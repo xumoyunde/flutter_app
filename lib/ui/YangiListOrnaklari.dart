@@ -6,12 +6,11 @@ class YangiListOrnaklari extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     oquvchiMalumotlariniKeltir();
 
     return ListView.separated(
-      separatorBuilder: (context, index){
-        if(index%5 == 0 && index != 0){
+      separatorBuilder: (context, index) {
+        if (index % 5 == 0 && index != 0) {
           return Divider(
             thickness: 4,
             color: Colors.orangeAccent,
@@ -23,34 +22,24 @@ class YangiListOrnaklari extends StatelessWidget {
       itemCount: 50,
       itemBuilder: (context, index) {
         return Card(
-          color: index%2 == 0 ? Colors.yellowAccent : Colors.orangeAccent,
+          color: index % 2 == 0 ? Colors.yellowAccent : Colors.orangeAccent,
           elevation: 4,
           child: ListTile(
             leading: Icon(Icons.child_care),
             title: Text(hammaOquvchilar[index]._ism),
             subtitle: Text(hammaOquvchilar[index]._izoh),
             trailing: Icon(Icons.add_circle_outline),
-            onTap: (){
-              debugPrint('onTap ishladi');
-              Fluttertoast.showToast(
-                msg: 'onTap metodi ishladi',
-                gravity: ToastGravity.BOTTOM,
-                toastLength: Toast.LENGTH_SHORT,
-                backgroundColor: Colors.redAccent,
-                textColor: Colors.white,
-                fontSize: 16.0,
+            onTap: () {
+              debugPrint(
+                hammaOquvchilar[index].toString(),
               );
+              toastMessageKorsat(index, false);
+              alertDialogKorsat(context);
             },
-            onLongPress: (){
+            onLongPress: () {
               debugPrint('onLongPress ishladi');
-              Fluttertoast.showToast(
-                msg: 'onLongPress metodi ishladi',
-                gravity: ToastGravity.BOTTOM,
-                toastLength: Toast.LENGTH_SHORT,
-                backgroundColor: Colors.redAccent,
-                textColor: Colors.white,
-                fontSize: 16.0,
-              );
+              toastMessageKorsat(index, true);
+              alertDialogKorsat(context);
             },
           ),
         );
@@ -60,10 +49,55 @@ class YangiListOrnaklari extends StatelessWidget {
 
   void oquvchiMalumotlariniKeltir() {
     hammaOquvchilar = List.generate(
-      50, (index) => Oquvchi(
-        'Oquvchi $index Ismi',
-        'Oquvchi Izohi $index',
-         index % 2 == 0 ? true : false),
+      50,
+      (index) => Oquvchi('Oquvchi $index Ismi', 'Oquvchi Izohi $index',
+          index % 2 == 0 ? true : false),
+    );
+  }
+
+  void alertDialogKorsat(BuildContext ctx){
+    showDialog(
+      context: ctx,
+      barrierDismissible: true,
+      builder: (ctx) {
+        return AlertDialog(
+          title: Text('Alert Dialog Head Part'),
+          content: SingleChildScrollView(
+            child: ListBody (
+              children: <Widget>[
+                Text('Alert Dialog Interior \nFirst Line \nSecond Line',),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.greenAccent,),
+              onPressed: () {
+                print('bosildi');
+              },
+              child: Text('Ha', style: TextStyle(color: Colors.white),),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent,),
+              onPressed: (){
+                Navigator.of(ctx).pop();
+              },
+              child: Text("Yo'q", style: TextStyle(color: Colors.white),),
+            )
+          ],
+        );
+      }
+    );
+  }
+
+  void toastMessageKorsat(int index, bool uzunBosilish) {
+    Fluttertoast.showToast(
+      msg: uzunBosilish ? 'Uzun bosildi :' + hammaOquvchilar[index].toString() : 'Bir marta bosildi :' + hammaOquvchilar[index].toString(),
+      gravity: ToastGravity.BOTTOM,
+      toastLength: Toast.LENGTH_SHORT,
+      backgroundColor: Colors.redAccent,
+      textColor: Colors.white,
+      fontSize: 16.0,
     );
   }
 }
@@ -74,4 +108,9 @@ class Oquvchi {
   bool _jinsi = true;
 
   Oquvchi(this._ism, this._izoh, this._jinsi);
+
+  @override
+  String toString() {
+    return 'Tanlangan $_ism $_izoh';
+  }
 }
