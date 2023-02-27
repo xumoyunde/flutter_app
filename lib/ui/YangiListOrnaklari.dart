@@ -12,26 +12,30 @@ class YangiListOrnaklari extends StatelessWidget {
     return ListView.separated(
       separatorBuilder: (context, index){
         if(index%5 == 0 && index != 0){
-          return Divider(thickness: 4, color: Colors.orangeAccent,);
+          return Divider(
+            thickness: 4,
+            color: Colors.orangeAccent,
+          );
         } else {
           return Divider();
         }
       },
       itemCount: 50,
-      itemBuilder: (context, index){
+      itemBuilder: (context, index) {
         return Card(
           color: index%2 == 0 ? Colors.yellowAccent : Colors.orangeAccent,
+          elevation: 4,
           child: ListTile(
-            leading: Icon(Icons.child_care_rounded),
-            title: Text(hammaOquvchilar[index+1]._ism),
-            subtitle: Text(hammaOquvchilar[index+1]._izohi),
+            leading: Icon(Icons.child_care),
+            title: Text(hammaOquvchilar[index]._ism),
+            subtitle: Text(hammaOquvchilar[index]._izoh),
             trailing: Icon(Icons.add_circle_outline),
             onTap: (){
               debugPrint('onTap ishladi');
               Fluttertoast.showToast(
-                msg: 'This is bottom short click toast',
-                toastLength: Toast.LENGTH_LONG,
+                msg: 'onTap metodi ishladi',
                 gravity: ToastGravity.BOTTOM,
+                toastLength: Toast.LENGTH_SHORT,
                 backgroundColor: Colors.redAccent,
                 textColor: Colors.white,
                 fontSize: 16.0,
@@ -40,9 +44,9 @@ class YangiListOrnaklari extends StatelessWidget {
             onLongPress: (){
               debugPrint('onLongPress ishladi');
               Fluttertoast.showToast(
-                msg: 'This is bottom long click toast',
-                toastLength: Toast.LENGTH_LONG,
+                msg: 'onLongPress metodi ishladi',
                 gravity: ToastGravity.BOTTOM,
+                toastLength: Toast.LENGTH_SHORT,
                 backgroundColor: Colors.redAccent,
                 textColor: Colors.white,
                 fontSize: 16.0,
@@ -56,17 +60,18 @@ class YangiListOrnaklari extends StatelessWidget {
 
   void oquvchiMalumotlariniKeltir() {
     hammaOquvchilar = List.generate(
-      20,
-      (index) => Oquvchi('Oquvchi $index', 'Oquvchi izohi $index',
-          index % 2 == 0 ? true : false),
+      50, (index) => Oquvchi(
+        'Oquvchi $index Ismi',
+        'Oquvchi Izohi $index',
+         index % 2 == 0 ? true : false),
     );
   }
 }
 
 class Oquvchi {
   String _ism = '';
-  String _izohi = '';
+  String _izoh = '';
   bool _jinsi = true;
 
-  Oquvchi(this._ism, this._izohi, this._jinsi);
+  Oquvchi(this._ism, this._izoh, this._jinsi);
 }
