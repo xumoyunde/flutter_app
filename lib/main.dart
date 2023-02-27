@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ui/YangiListOrnaklari.dart';
+import 'package:github/ui/GridViewList.dart';
 
 void main(){
   runApp(MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body: YangiListOrnaklari(),
+        body: GridViewList(),
       ),
     );
   }
