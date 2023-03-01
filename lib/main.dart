@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:github/ui/GridViewList.dart';
+import 'package:github/ui/CollabsableToolBar.dart';
 
 void main(){
   runApp(MyApp());
@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.blueGrey,
+        brightness: Brightness.dark,
       ),
       home: Scaffold(
         appBar: AppBar(
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body: GridViewList(),
+        body: CollabsableToolBar(),
       ),
     );
   }
